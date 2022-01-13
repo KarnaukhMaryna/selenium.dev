@@ -15,21 +15,21 @@ namespace Selenium.dev
 
         [Test]
         public void CheckThatSupportedLanguagesIsPresent()
-        {           
-            GetMainPage().ClickOnDocumentationButton();
-            var languages = GetDocumentationPage().GetLanguages().Select(language => language.Text);
+        {
+            GetMainPage().Header.DocumentationButtonClick();
+            var languages = GetDocumentationPage().Body.ProgrammingLanguages.Select(language=>language.Text);
             CollectionAssert.IsNotEmpty(supportedLanguages.Intersect(languages));
         }
 
         [Test]
         public void CheckExampleForEachLanguage()
         {
-            GetMainPage().ClickOnDocumentationButton();
-            var languages = GetDocumentationPage().GetLanguages();
+            GetMainPage().Header.DocumentationButtonClick();
+            var languages = GetDocumentationPage().Body.ProgrammingLanguages;
             foreach (var language in languages)
             {
                 language.Click();
-                Assert.IsTrue(GetDocumentationPage().AreaWithCodeIsDisplayed());
+                Assert.IsTrue(GetDocumentationPage().Body.AreaWithCodeIsDisplayed());
             }
         }
     }

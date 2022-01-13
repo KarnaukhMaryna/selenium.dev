@@ -11,11 +11,7 @@ namespace Selenium.dev.Pages
     {
         public MainPage(WebDriver driver) : base(driver) => this.driver = driver;
 
-        private const string _documentationButton = "//a[@href = '/documentation']";
+        public NavigationComponent Header => new(driver, "//nav[contains(@class, 'navbar')]");
 
-        public void ClickOnDocumentationButton()
-        {
-            driver.FindElement(By.XPath(_documentationButton)).Click();
-        }
     }
 }

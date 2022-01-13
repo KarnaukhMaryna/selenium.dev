@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using Selenium.dev.Pages.ComponentsOfThePage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,14 +12,6 @@ namespace Selenium.dev.Pages
     {
         public DocumentationPage(WebDriver driver) : base(driver) => this.driver = driver;
 
-        private static string _programmingLanguage = "//li[@class='nav-item']";
-
-        private static string _areaWithCode = "//div[@class='tab-content']"; 
-
-        public List<IWebElement> GetLanguages() => driver.FindElements(By.XPath(_programmingLanguage)).ToList();
-
-        public bool AreaWithCodeIsDisplayed() => driver.FindElement(By.XPath(_areaWithCode)).Displayed;
-        
-        
+        public PageComponent Body => new(driver, "//div[@class='td-content']");
     }
 }
